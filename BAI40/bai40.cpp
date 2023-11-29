@@ -17,7 +17,7 @@ int main(){
         cout << "4. Cap nhat thon tin sinh vien" << endl;
         cout << "5. Tim kiem sinh vien" << endl;
         cout << "6. Hien thi danh sach ra man hinh" << endl;
-        cout << "7. Ghi danh sach sinh vien vao ten" << endl;
+        cout << "7. Ghi danh sach sinh vien vao tep" << endl;
         cout << "8. Thoat" << endl;
         cout << "--------------------------------" << endl;
         int choice;
@@ -34,7 +34,6 @@ int main(){
             case 2:{
                 system("cls");
                 cin >> a;
-                cout << "Them sinh vien thanh cong.\n";
                 cout << "Nhan phim bat ky de tiep tuc";
                 getch();
                 system("cls");
@@ -43,9 +42,7 @@ int main(){
             case 3:{
                 system("cls");
                 string msv;
-                cout << "Nhap MSV: "; cin >> msv;
                 a.deleteStudent(msv);
-                cout << "Xoa sinh vien thanh cong.\n";
                 cout << "Nhan phim bat ky de tiep tuc";
                 getch();
                 system("cls");
@@ -53,11 +50,8 @@ int main(){
             }
             case 4:{
                 system("cls");
-                string msv, ho_ten;
-                int tuoi;
-                cout << "Nhap MSV: "; cin >> msv;
+                string msv;
                 a.updateStudent(msv);
-                cout << "Cap nhat thong tin sinh vien thanh cong.";
                 cout << "Nhan phim bat ky de tiep tuc";
                 getch();
                 system("cls");
@@ -66,8 +60,6 @@ int main(){
             case 5:{
                 system("cls");
                 string msv;
-                cout << "Nhap MSV: ";
-                cin >> msv;
                 a.findStudent(msv);
                 cout << "Nhan phim bat ky de tiep tuc";
                 getch();
@@ -85,16 +77,12 @@ int main(){
             case 7:{
                 system("cls");
                 a.ghiFile("output.txt");
-                cout << "Ghi file thanh cong." << endl; 
                 cout << "Nhan phim bat ky de tiep tuc";
                 getch();
                 system("cls");            
                 break;
             }
             case 8:{
-                system("cls");
-                cout << "Nhan phim bat ky de tiep tuc";
-                getch();
                 system("cls");
                 return 0;
             }

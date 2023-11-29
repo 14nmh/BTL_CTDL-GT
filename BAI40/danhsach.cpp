@@ -29,6 +29,8 @@ class DanhSach{
         }
 
         void findStudent(string msv1){
+            cout << "Nhap MSV cua sinh vien can tim: ";
+            cin >> msv1;
             if(a.search(msv1, a.getRoot()) == NULL){
                 cout << "Khong co sinh vien can tim.\n";
             }
@@ -41,15 +43,19 @@ class DanhSach{
         }
 
         void deleteStudent(string msv1){
+            cout << "Nhap MSV cua sinh vien can xoa: "; cin >> msv1;
             if(a.search(msv1, a.getRoot()) == NULL){
-                cout << "Khong co sinh vien can tim.\n";
+                cout << "Khong tim thay sinh vien nay.\n";
             }
             else{
                 a.remove(msv1);
+                cout << "Xoa sinh vien thanh cong.\n";
             }
         }
 
         void updateStudent(string msv1){
+            cout << "Nhap MSV cua sinh vien can cap nhat: "; 
+            cin >> msv1;
             if(a.search(msv1, a.getRoot()) == NULL){
                 cout << "Khong co sinh vien can tim.\n";
             }
@@ -60,13 +66,17 @@ class DanhSach{
                 cout << "Nhap tuoi can thay doi: "; cin >> tuoi;
                 Student tmp(msv1, ten, tuoi);
                 addStudent(tmp);
+                cout << "Cap nhat thong tin sinh vien thanh cong.\n";
             }
         }
+
         friend istream& operator>> (istream& is, DanhSach& d){
             cout << "Nhap thong tin sinh vien: \n";
             Student tmp; is >> tmp;
-            if(d.a.search(tmp.getMSV(), d.a.getRoot()) == NULL)
+            if(d.a.search(tmp.getMSV(), d.a.getRoot()) == NULL){
                 d.addStudent(tmp);
+                cout << "Them sinh vien thanh cong.\n";
+            }
             else    
                 cout << "Sinh vien da ton tai.\n";
             return is;
@@ -114,6 +124,7 @@ class DanhSach{
             }
             ghiFile(file, a.getRoot());
             file.close();
+            cout << "Ghi file thanh cong." << endl; 
         }
 };
 #endif
