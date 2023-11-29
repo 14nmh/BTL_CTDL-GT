@@ -1,32 +1,8 @@
-#include <bits/stdc++.h>
-#ifndef _BST_CPP
-#define _BST_CPP
+#include <iostream>
+#include "node.cpp"
+#ifndef _BST_CPP__
+#define _BST_CPP__
 using namespace std;
-
-template<class Keys, class T>
-class Node{
-    Keys key;
-    T elem;
-    Node<Keys,T> *parent;
-    Node<Keys,T> *left;
-    Node<Keys,T> *right;
-    public:
-        Node(){
-            parent = left = right = NULL;
-        }
-        Node<Keys,T> *getParent() { return parent; }
-        Node<Keys,T> *getLeft() { return left; }
-        Node<Keys,T> *getRight() { return right; }
-        void setLeft(Node<Keys,T> *p) { left = p; }
-        void setRight(Node<Keys,T> *p) { right = p; }
-        void setParent(Node<Keys,T> *p) { parent = p; }
-        int hasLeft() { return left != NULL; }
-        int hasRight() { return right != NULL; }
-        T getElem() { return elem; }
-        void setElem(T e) { elem = e; }
-        Keys getKey(){ return key;}
-        void setKey(Keys k){ key = k; }
-}; 
 
 template<class Keys, class T>
 class BST{
@@ -102,15 +78,17 @@ class BST{
                 cout << p->getKey() << " ";
             }
         }
+
         Node<Keys, T>* search(Keys key, Node<Keys, T>* p){
             if(p != NULL){
                 if(p->getKey() > key)
                     return search(key, p->getLeft());
-                else  
+                else{
                     if(p->getKey() < key)
                         return search(key, p->getRight());
                     else 
                         return p;
+                }
             }
             else return NULL;
         }
@@ -127,7 +105,7 @@ class BST{
 	        else{
 		        p = root;
 		        while(p != NULL){
-			        if(key< p->getKey())
+			        if(key< p->getKey()){
 				        if(p->getLeft()==NULL){
 					        q->setParent(p);
 					        p->setLeft(q);
@@ -136,7 +114,8 @@ class BST{
 				        }
 				        else
 					        p = p->getLeft();
-			        else
+                    }
+			        else{
 				        if(key> p->getKey())  // nam ben cay con ben phai
 						    if(p->getRight()== NULL){
 							    q->setParent(p);
@@ -150,10 +129,12 @@ class BST{
 						    delete q;
 						    p=NULL;
 				        }
-		            }
-                }
+                    }
+		        }
+            }
             return q;    
         }
+
         void remove(Keys key){
             Node<Keys, T> *v = search(key, root);
             if(v == NULL) return;
@@ -169,40 +150,3 @@ class BST{
         }
 };
 #endif
-// int main(){
-// 	BST<int,char*> tree;
-// 	Node<int,char*> *p;
-// 	//BNode<int,float> *p;
-// //	system("cls");
-// 	tree.insert(100,"100-1");
-// 	tree.insert(80,"80a");
-// 	tree.insert(25,"25x");
-// 	tree.insert(105,"105");
-// 	tree.insert(13,"13");
-// 	tree.insert(120,"120");
-// 	tree.insert(175,"175");
-// 	tree.insert(30,"30x");
-// 	tree.insert(46,"46");
-// 	//tree.preOrder(tree.getRoot(),visit);
-// 	cout<<"\nDuyet cay theo thu tu giua:";	
-// 	tree.inOrder(tree.getRoot());
-	
-// 	tree.remove(25);
-// 	cout<<"\n";
-// 	cout<<"\nDuyet cay theo thu tu dau:";	
-// 	tree.preOrder(tree.getRoot());
-// 	   	cout<<"\n";
-//     tree.postOrder(tree.getRoot());
-//     tree.remove(150);
-//     cout<<"\n";
-// 	p = tree.search(120, tree.getRoot());
-// 	if(p!=NULL)
-// 	  cout<<"Tim thay khoa 120, Co gia tri "<<p->getElem();
-// 	else
-// 	  cout<<"Khong tim thay khoa 120.";
-	  
-//     tree.remove(120);
-//     //tree.remove(100);
-//     tree.remove(70);    
-// 	return 0;
-// }

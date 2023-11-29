@@ -1,211 +1,114 @@
 #include <iostream>
-#include "bst.cpp"
+#include <fstream>
+#include <conio.h>
+#include "danhsach.cpp"
 using namespace std;
-class Student{
-    string msv;
-    string hoten;
-    int tuoi;
-    public:
-        Student(){}
-        Student(string msv1, string hoten1, int tuoi1){
-            msv = msv1;
-            hoten = hoten1;
-            tuoi = tuoi1;
-        }
-        string getMSV() { return msv;}
-        string getHoten() { return hoten;}
-        int getTuoi() { return tuoi;}
-        void setMSV(string msv1) { msv = msv1; }
-        void setHoten(string hoten1) { hoten = hoten1; }
-        void setTuoi(int tuoi1) { tuoi = tuoi1; } 
-        friend istream& operator>> (istream& is, Student& a){
-            cout << "\tNhap ma sinh vien: "; 
-            is >> a.msv;
-            cout << "\tNhap ho ten: ";
-            cin.ignore();
-            getline(is, a.hoten);
-            cout << "\tNhap tuoi: ";
-            is >> a.tuoi;
-            return is;
-        }
-        friend ostream& operator<< (ostream& cout, Student& a){
-            cout << "Ma sinh vien: " << a.msv << endl;
-            cout << "Ho ten: " << a.hoten << endl;
-            cout << "Tuoi: " << a.tuoi << endl;
-            return cout;
-        }
-};
-class DanhSach{
-    BST<string, Student> a;
-    public:
-        DanhSach(){}
-        DanhSach(BST<string, Student> a1){
-            a = a1;
-        }
-        void addStudent(Student &s){
-            a.insert(s.getMSV(), s);
-        }
-        // void insert(){
-        //     Student tmp; cin >> tmp;
-        //     addStudent(tmp);
-        // }
-       void duyet(Node<string, Student>* p) {
-            if (p != NULL) {
-                duyet(p->getLeft());
-                cout << "Ma sinh vien: " << p->getElem().getMSV() << endl;
-                cout << "Ho ten: " << p->getElem().getHoten() << endl;
-                cout << "Tuoi: " << p->getElem().getTuoi() << endl << endl;
-                duyet(p->getRight());
-            }
-        }
 
-        void duyet() {
-            duyet(a.getRoot());
-        }
-        void findStudent(string msv1){
-            if(a.search(msv1, a.getRoot()) == NULL){
-                cout << "Khong co sinh vien can tim.\n";
-            }
-            else{
-                cout << "Sinh vien can tim la: \n";
-                cout << "Ma sinh vien: " <<  a.search(msv1, a.getRoot())->getElem().getMSV() << endl;
-                cout << "Ho ten: " <<  a.search(msv1, a.getRoot())->getElem().getHoten() << endl;
-                cout << "Tuoi: " << a.search(msv1, a.getRoot())->getElem().getTuoi() << endl;
-            }
-        }
-
-        void deleteStudent(string msv1){
-            if(a.search(msv1, a.getRoot()) == NULL){
-                cout << "Khong co sinh vien can tim.\n";
-            }
-            else{
-                a.remove(msv1);
-            }
-        }
-        void updateStudent(string msv1){
-            if(a.search(msv1, a.getRoot()) == NULL){
-                cout << "Khong co sinh vien can tim.\n";
-            }
-            else{
-                string ten; int tuoi;
-                deleteStudent(msv1);
-                cout << "Nhap ten can thay doi: "; cin.ignore(); getline(cin, ten);
-                cout << "Nhap tuoi can thay doi: "; cin >> tuoi;
-                Student tmp(msv1, ten, tuoi);
-                addStudent(tmp);
-            }
-        }
-        friend istream& operator>> (istream& is, DanhSach& d){
-            cout << "Nhap thong tin sinh vien: \n";
-            Student tmp; is >> tmp;
-            if(d.a.search(tmp.getMSV(), d.a.getRoot()) == NULL)
-                d.addStudent(tmp);
-            else    
-                cout << "Sinh vien da ton tai.\n";
-            return is;
-        }
-
-        void docFile(ifstream& file) {
-            string msv, ho_ten;
-            int tuoi;
-
-            while (file >> msv) {
-                file.ignore();
-                getline(file, ho_ten);
-                file >> tuoi;
-                Student tmp(msv, ho_ten, tuoi);
-                addStudent(tmp);
-            }
-        }
-
-        void docFile(const string& filename) {
-            ifstream file(filename);
-            if (file) {
-                docFile(file);
-                file.close();
-            } else {
-                cout << "Khong mo duoc tep." << endl;
-            }
-        }
-
-        void ghiFile(ofstream& file, Node<string, Student>* p) {
-            if (p != nullptr) {
-                ghiFile(file, p->getLeft());
-                file << "MSV: " << p->getElem().getMSV() << endl;
-                file << "Ho ten: " << p->getElem().getHoten() << endl;
-                file << "Tuoi: " << p->getElem().getTuoi() << endl;
-                file << "-------------------------" << endl;
-                ghiFile(file, p->getRight());
-            }
-        }
-
-        void ghiFile(const string& filename) {
-            ofstream file(filename);
-            if (!file) {
-                cout << "Khong mo duoc tiep." << endl;
-                return;
-            }
-            ghiFile(file, a.getRoot());
-            file.close();
-        }
-};
 int main(){
+    system("cls");
     cout << "------------ BAI 40 ------------" << endl;
     DanhSach a;
-    a.docFile("students.txt");
     while (true) {
+        cout << "--------------------------------" << endl;
         cout << "Chon chuc nang:" << endl;
-        cout << "1. Them sinh vien" << endl;
-        cout << "2. Xoa sinh vien" << endl;
-        cout << "3. Cap nhat thon tin sinh vien" << endl;
-        cout << "4. Tim kiem" << endl;
-        cout << "5. Hien thi danh sach" << endl;
-        cout << "6. Ghi danh sach sinh vien" << endl;
-        cout << "7. Thoat" << endl;
+        cout << "1. Doc danh sach sinh vien tu tep" << endl;
+        cout << "2. Them sinh vien" << endl;
+        cout << "3. Xoa sinh vien" << endl;
+        cout << "4. Cap nhat thon tin sinh vien" << endl;
+        cout << "5. Tim kiem sinh vien" << endl;
+        cout << "6. Hien thi danh sach ra man hinh" << endl;
+        cout << "7. Ghi danh sach sinh vien vao ten" << endl;
+        cout << "8. Thoat" << endl;
+        cout << "--------------------------------" << endl;
         int choice;
         cin >> choice;
-
         switch (choice) {
-            case 1: {
-                cin >> a;
+            case 1:{
+                system("cls");
+                a.docFile("students.txt");
+                cout << "Nhan phim bat ky de tiep tuc";
+                getch();
+                system("cls");
                 break;
             }
-            case 2: {
+            case 2:{
+                system("cls");
+                cin >> a;
+                cout << "Them sinh vien thanh cong.\n";
+                cout << "Nhan phim bat ky de tiep tuc";
+                getch();
+                system("cls");
+                break;
+            }
+            case 3:{
+                system("cls");
                 string msv;
                 cout << "Nhap MSV: "; cin >> msv;
                 a.deleteStudent(msv);
+                cout << "Xoa sinh vien thanh cong.\n";
+                cout << "Nhan phim bat ky de tiep tuc";
+                getch();
+                system("cls");
                 break;
             }
-            case 3: {
+            case 4:{
+                system("cls");
                 string msv, ho_ten;
                 int tuoi;
                 cout << "Nhap MSV: "; cin >> msv;
                 a.updateStudent(msv);
+                cout << "Cap nhat thong tin sinh vien thanh cong.";
+                cout << "Nhan phim bat ky de tiep tuc";
+                getch();
+                system("cls");
                 break;
             }
-            case 4: {
+            case 5:{
+                system("cls");
                 string msv;
                 cout << "Nhap MSV: ";
                 cin >> msv;
                 a.findStudent(msv);
+                cout << "Nhan phim bat ky de tiep tuc";
+                getch();
+                system("cls");
+                break;
             }
-            case 5: {
+            case 6:{
+                system("cls");
                 a.duyet();
+                cout << "Nhan phim bat ky de tiep tuc";
+                getch();
+                system("cls");
                 break;
             }
-            case 6: {
+            case 7:{
+                system("cls");
                 a.ghiFile("output.txt");
-                cout << "Ghi file thanh cong." << endl;
+                cout << "Ghi file thanh cong." << endl; 
+                cout << "Nhan phim bat ky de tiep tuc";
+                getch();
+                system("cls");            
                 break;
             }
-            case 7: {
+            case 8:{
+                system("cls");
+                cout << "Nhan phim bat ky de tiep tuc";
+                getch();
+                system("cls");
                 return 0;
             }
-            default: {
+            default:{
+                system("cls");
                 cout << "Lua chon khong hon le." << endl;
+                cout << "Nhan phim bat ky de tiep tuc";
+                getch();
+                system("cls");
+                break;
             }
         }
     }
-
     return 0;
 }
+
+// Nguyen Manh Hung

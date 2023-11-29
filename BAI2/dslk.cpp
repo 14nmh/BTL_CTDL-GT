@@ -21,26 +21,24 @@ template<class T>
 class slist_it{
     Node<T> *cur;
     public:
-    //    slist_it(){ cur = NULL; }
         slist_it(Node<T> *N = NULL){ cur = N; }
-        Node <T> *getcur() { return cur; }
+        Node <T> *getCur() { return cur; }
         slist_it<T> &operator = (slist_it<T> p){ 
-            this->cur = p.getcur();
+            this->cur = p.getCur();
             return *this;
         }
         bool operator != (slist_it<T> p){
-            return cur!=p.getcur();
+            return cur!=p.getCur();
         }
-        slist_it<T> operator++(){ 
+        slist_it<T> operator++(){  // ++it, tang roi tra ve gia tri tang
             cur = cur->getNext();
             return cur; 
         }
-        slist_it<T> operator++(int){
-            Node<T> *tmp = cur;
-            cur = cur->getNext();
-            return tmp;
-        }
-
+        // slist_it<T> operator++(int){ // it++, tra ve gia tri ban dau roi tang
+        //     Node<T> *tmp = cur;
+        //     cur = cur->getNext();
+        //     return tmp;
+        // }
         T &operator*(){ return cur->getElem(); } 
 };
 template<class T>

@@ -1,12 +1,32 @@
-MSV: 123
-Ho ten: hung
+---------------------------------
+MSV: 22121
+Ho ten: Nguyen Ha Kien
+Tuoi: 5
+---------------------------------
+MSV: 22122
+Ho ten: Le Xuan Bao Anh
+Tuoi: 9
+---------------------------------
+MSV: 22123
+Ho ten: Trinh Manh Quang
+Tuoi: 6
+---------------------------------
+MSV: 22124
+Ho ten: Mai Duc Vinh
+Tuoi: 5
+---------------------------------
+MSV: 22125
+Ho ten: Le Dang Son
+Tuoi: 2
+---------------------------------
+MSV: 22126
+Ho ten: Dao Tuan Anh 
+Tuoi: 4
+---------------------------------
+MSV: 22128
+Ho ten: Truong Van Minh
+Tuoi: 9
+---------------------------------
+MSV: 22129
+Ho ten: Nguyen Manh Hung
 Tuoi: 10
--------------------------
-MSV: 234
-Ho ten: hlasd asd
-Tuoi: 34
--------------------------
-MSV: 43
-Ho ten: manh
-Tuoi: 30
--------------------------
