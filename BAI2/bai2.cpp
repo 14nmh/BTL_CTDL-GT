@@ -12,20 +12,31 @@ int main() {
     cout << "Da thuc A la: y(x) = " << a << endl;
     cout << "Da thuc B la: y(x) = " << b << endl;
 
-    tong = a + b; cout << "Tong hai da thuc la: y(x) = " << tong << endl;
-
-    hieu = a - b; cout << "Hieu hai da thuc la: y(x) = " << hieu << "\n";
-
-    tich = a*b; cout << "Tich hai da thuc la: y(x) = " << tich << "\n";
+    tong = a + b; 
+    cout << "Tong hai da thuc la: y(x) = " << tong << endl;
+    hieu = a - b; 
+    cout << "Hieu hai da thuc la: y(x) = " << hieu << "\n";
+    tich = a*b; 
+    cout << "Tich hai da thuc la: y(x) = " << tich << "\n";
 
     ofstream outputFile("output.txt");
     outputFile << "OUTPUT" << endl;
     outputFile << "----------------------------------------------------------------";
-    outputFile << "\nDa thuc A la: y(x) = ";        a.ghiFile(outputFile, a);        
-    outputFile << "\nDa thuc B la: y(x) = ";        b.ghiFile(outputFile, b); 
-    outputFile << "\nTong hai da thuc la: y(x) = "; tong.ghiFile(outputFile, tong);
-    outputFile << "\nTich hai da thuc la: y(x) = "; tich.ghiFile(outputFile, tich); 
-    outputFile << "\nHieu hai da thuc la: y(x) = "; hieu.ghiFile(outputFile, hieu); 
+    outputFile << "\nDa thuc A la: y(x) = ";        
+    a.ghiFile(outputFile, a);        
+
+    outputFile << "\nDa thuc B la: y(x) = ";        
+    b.ghiFile(outputFile, b); 
+
+    outputFile << "\nTong hai da thuc la: y(x) = "; 
+    tong.ghiFile(outputFile, tong);
+
+    outputFile << "\nHieu hai da thuc la: y(x) = "; 
+    hieu.ghiFile(outputFile, hieu); 
+
+    outputFile << "\nTich hai da thuc la: y(x) = "; 
+    tich.ghiFile(outputFile, tich);
+    
     outputFile.close();
     cout << "--------------------------------" << endl;
 }

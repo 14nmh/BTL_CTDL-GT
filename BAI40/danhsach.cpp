@@ -43,7 +43,8 @@ class DanhSach{
         }
 
         void deleteStudent(string msv1){
-            cout << "Nhap MSV cua sinh vien can xoa: "; cin >> msv1;
+            cout << "Nhap MSV cua sinh vien can xoa: "; 
+            cin >> msv1;
             if(a.search(msv1, a.getRoot()) == NULL){
                 cout << "Khong tim thay sinh vien nay.\n";
             }
@@ -61,7 +62,7 @@ class DanhSach{
             }
             else{
                 string ten; int tuoi;
-                deleteStudent(msv1);
+                a.remove(msv1);
                 cout << "Nhap ten can thay doi: "; cin.ignore(); getline(cin, ten);
                 cout << "Nhap tuoi can thay doi: "; cin >> tuoi;
                 Student tmp(msv1, ten, tuoi);

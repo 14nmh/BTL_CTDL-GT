@@ -14,7 +14,7 @@ int main(){
         cout << "1. Doc danh sach sinh vien tu tep" << endl;
         cout << "2. Them sinh vien" << endl;
         cout << "3. Xoa sinh vien" << endl;
-        cout << "4. Cap nhat thon tin sinh vien" << endl;
+        cout << "4. Cap nhat thong tin sinh vien" << endl;
         cout << "5. Tim kiem sinh vien" << endl;
         cout << "6. Hien thi danh sach ra man hinh" << endl;
         cout << "7. Ghi danh sach sinh vien vao tep" << endl;

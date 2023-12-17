@@ -1,4 +1,8 @@
 ---------------------------------
+MSV: 123
+Ho ten: NM Hung
+Tuoi: 12
+---------------------------------
 MSV: 22121
 Ho ten: Nguyen Ha Kien
 Tuoi: 5
@@ -6,10 +10,6 @@ Tuoi: 5
 MSV: 22122
 Ho ten: Le Xuan Bao Anh
 Tuoi: 9
----------------------------------
-MSV: 22123
-Ho ten: Trinh Manh Quang
-Tuoi: 6
 ---------------------------------
 MSV: 22124
 Ho ten: Mai Duc Vinh

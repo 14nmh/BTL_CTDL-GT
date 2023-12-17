@@ -7,7 +7,7 @@ template<class Keys, class T>
 class Node{
     Keys key;
     T elem;
-    Node<Keys,T> *parent;
+   Node<K eys,T> *parent;
     Node<Keys,T> *left;
     Node<Keys,T> *right;
     public:
